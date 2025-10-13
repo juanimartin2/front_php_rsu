@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RegisterModal from "../components/RegisterModal";
 import { login } from "../services/api";
+import Logo from "../public/logo-ucc.svg?react";
 import { setUser, getUser } from "../auth";
 
 export default function Login() {
@@ -48,12 +49,12 @@ export default function Login() {
     <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
       <div className="login-form">
     
-        <div className="logo">
-          <div className="logo-placeholder">🌿</div> {/* Simple emoji placeholder for green circle with leaves */}
+        <div className="imgBox flex justify-center mb-4">
+          <img src={Logo} alt="logo_ucc" height="auto" width="20%" id="image-section"/>
         </div>
 
-        <label className="text-2xl">Responsabilidad Social Universitaria | UCC</label>
-        <h2 className="text-2xl">Iniciar Sesión</h2>
+        <label className="text-2xl mb-4">Responsabilidad Social Universitaria | UCC</label>
+        <h2 className="text-2xl mb-6">Iniciar Sesión</h2>
 
         {error && <div className="text-red-500 mb-3">{error}</div>}
         
@@ -64,7 +65,7 @@ export default function Login() {
               value={cuit}
               onChange={(e) => setCuit(e.target.value)}
               placeholder="Ingrese Nº de CUIL/CUIT"
-              className="w-full border rounded-lg px-3 py-2"
+              className="w-full border rounded-lg px-3 py-2 mb-4"
               required
             />
           </div>
@@ -74,7 +75,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Contraseña"
-              className="w-full border rounded-lg px-3 py-2"
+              className="w-full border rounded-lg px-3 py-2 mb-4"
               required
             />
           </div>

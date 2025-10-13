@@ -7,6 +7,18 @@
   text-align: center;
 }
 
+@media screen and (max-width: 320px){
+
+#image-section{
+    width: 100%;
+    height: auto;
+  };
+
+.imgBox{
+    max-width: 400px;
+  };
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -18,12 +30,6 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
 }
 
 @media (max-width: 480px) {
@@ -53,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 100%;
   max-width: 400px; /* Keeps form compact */
 }
 
@@ -61,7 +67,7 @@
   background-color: #ffffff;
   color: #000000;
   border-radius: 12px; /* Rounded corners */
-  padding: 40px 30px; 
+  padding: 2rem;
   width: 60%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
   text-align: center;
@@ -71,7 +77,7 @@
 .submit-btn {
   width: 100%;
   padding: 12px;
-  background-color: #4CAF50; /* Green */
+  background-color: #00492b; /* Green */
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -79,12 +85,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-bottom: calc(var(--spacing) * 2);
 }
 .submit-btn:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
+  background-color: #027042; /* Slightly darker green on hover */
 }
 .submit-btn:active {
-  background-color: #3e8e41; /* Even darker green on click */
+  background-color: #013b23; /* Even darker green on click */
 }
 .submit-btn:disabled {
   background-color: #a5d6a7; /* Light green when disabled */
@@ -102,6 +109,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-bottom: calc(var(--spacing) * 2);
 }
 .register-btn:hover {
   background-color: #333333; /* Slightly darker black on hover */

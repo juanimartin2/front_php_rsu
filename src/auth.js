@@ -1,4 +1,4 @@
-// auth.js - helpers para localStorage
+// helpers para localStorage
 export function setUser(user) {
   try {
     localStorage.setItem("user", JSON.stringify(user));
