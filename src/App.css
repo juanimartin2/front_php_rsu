@@ -1,10 +1,31 @@
 #root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 auto;
-  min-height: 50vh;
+  min-width: 100%;
+  min-height: 100vh;
   text-align: center;
+  
+  /* Colores Página */
+  --main-color: #00492b;
+  --hoover-main-color: #027042;
+  --sec-ext-color: #781A1A;
+  --hoover-sec-ext-color: #cf3838;
+  --facu-derecho-color: #781A1A;
+  --hoover-facu-derecho-color: #dd3d3d;
+  --facu-econom-color: #1B3B82;
+  --facu-econom-color: #3568d6;
+  --facu-medicas-color: #2A8B22;
+  --hoover-facu-medicas-color: #67bb5f;
+  --facu-educ-color: #DE6E00;
+  --hoover-facu-educ-color: #ff9c39;
+  --facu-filo-color: #E31E24;
+  --hoover-facu-filo-color: #f3656a;
+  --facu-alim-color: #07858A;
+  --hoover-facu-alim-color: #23c3c9;
+  --esc-seg-color: #021233;
+  --hoover-esc-seg-color: #4669af;
+  --esc-form-color: #FEED00;
+  --hoover-esc-form-color: #faf6bb;
+
 }
 
 @media screen and (max-width: 320px){
@@ -113,4 +134,57 @@
 }
 .register-btn:hover {
   background-color: #333333; /* Slightly darker black on hover */
+}
+
+/* css registro */
+fieldset {
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: var(--hoover-main-color);
+    font-weight: 600;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--hoover-main-color);
+}
+
+.checkbox-item label {
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error.show {
+    display: block;
 }

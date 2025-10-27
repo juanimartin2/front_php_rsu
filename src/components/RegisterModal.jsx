@@ -6,6 +6,7 @@ export default function RegisterModal({ isOpen, onClose }) {
   const [cuit, setCuit] = useState("");
   const [password, setPassword] = useState("");
   const [rol, setRol] = useState("");
+  const [ambitos, setAmbitos] = useState([]);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
@@ -16,7 +17,7 @@ export default function RegisterModal({ isOpen, onClose }) {
     setError(null);
     setSuccess(null);
 
-    if (!nombre || !cuit || !password || !rol) {
+    if (!nombre || !cuit || !password || !rol || ambitos.length === 0) {
       setError("Todos los campos son obligatorios");
       return;
     }
@@ -25,7 +26,7 @@ export default function RegisterModal({ isOpen, onClose }) {
       return;
     }
 
-    const res = await register(nombre, cuit, password, rol);
+    const res = await register(nombre, cuit, password, rol, ambitos);
 
     if (res.success) {
       setSuccess("Usuario registrado con éxito. Ahora puedes iniciar sesión.");
@@ -33,6 +34,7 @@ export default function RegisterModal({ isOpen, onClose }) {
       setCuit("");
       setPassword("");
       setRol("");
+      setAmbitos([]);
     } else {
       setError(res.error || "Error desconocido");
     }
@@ -54,8 +56,8 @@ export default function RegisterModal({ isOpen, onClose }) {
             required
           />
           <input
-            type="number"
-            min="11" max="11"
+            type="text"
+            minLength="11" maxLength="11"
             placeholder="CUIT"
             value={cuit}
             onChange={(e) => setCuit(e.target.value)}
@@ -71,22 +73,51 @@ export default function RegisterModal({ isOpen, onClose }) {
             required
           />
           <label for="rol">Rol</label>
-          <select id="rol"
-            name="rol" 
+          <select 
+            id="rol"
+            name="rol_id" 
             value={rol}  
             onChange={(e) => setRol(e.target.value)}
             className="w-full border rounded-lg px-3 py-2"
             required
           >
-            <option value="lector">Lector</option>
-            <option value="operador">Operador</option>
-            <option value="encargado">Encargado</option>
-            <option value="administrador">Administrador</option>
-
+            <option value="">-- Seleccione un rol --</option>
+            <option value="1">Lector</option>
+            <option value="2">Operador</option>
+            <option value="3">Encargado</option>
+            <option value="4">Administrador</option>
           </select>
+
+          <fieldset>
+            <legend>Ámbitos a los que pertenece</legend>
+            <div className="checkbox-group">
+              <div className="checkbox-item">
+                <input type="checkbox" id="gestion" 
+                onChange={(e) => setAmbitos((prev) => [...prev, e.target.value])} name="ambitos[]" value="1" />
+                <label for="gestion">Gestión</label>
+                  </div>
+                  <div className="checkbox-item">
+                      <input type="checkbox" id="docencia" 
+                      onChange={(e) => setAmbitos((prev) => [...prev, e.target.value])} name="ambitos[]" value="2" />
+                      <label for="docencia">Docencia</label>
+                  </div>
+                  <div className="checkbox-item">
+                      <input type="checkbox" id="investigacion" 
+                      onChange={(e) => setAmbitos((prev) => [...prev, e.target.value])} name="ambitos[]" value="3" />
+                      <label for="investigacion">Investigación</label>
+                  </div>
+                  <div className="checkbox-item">
+                      <input type="checkbox" id="extension" 
+                      onChange={(e) => setAmbitos((prev) => [...prev, e.target.value])} name="ambitos[]" value="4" />
+                      <label for="extension">Extensión</label>
+                  </div>
+              </div>
+              <div class="error" id="errorAmbitos">Debe seleccionar al menos un ámbito</div>
+          </fieldset>
+
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white hover:text-gray-500 rounded-lg py-2"
+            className="w-full bg-blue-600 text-white hover:text-gray-300 rounded-lg py-2"
           >
             Registrarse
           </button>
