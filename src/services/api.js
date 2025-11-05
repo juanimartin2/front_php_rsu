@@ -137,7 +137,6 @@ export async function getRoles() {
 }
 
 // Obtiene lista de ámbitos desde el backend
-
 export async function getAmbitos() {
   try {
     const res = await fetch("/index.php?path=/api/ambitos");
@@ -155,6 +154,52 @@ export async function getUsuarios() {
     return await handleResponse(res);
   } catch (e) {
     console.error("Error al obtener usuarios:", e);
+    return { error: "Error de red" };
+  }
+}
+
+// Actualizar usuario
+export async function updateUsuario(id, nom_usu, cuit_usu, pass_usu, rol_id, ambitos) {
+  try {
+    const body = { nom_usu, cuit_usu, rol_id, ambitos };
+    if (pass_usu) body.pass_usu = pass_usu; // Solo si se cambia
+    
+    const res = await fetch(`/usuarios/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return await handleResponse(res);
+  } catch (e) {
+    console.error("Error en updateUsuario:", e);
+    return { error: "Error de red" };
+  }
+}
+
+// Eliminar usuario
+export async function deleteUsuario(id) {
+  try {
+    const res = await fetch(`/usuarios/${id}`, {
+      method: "DELETE",
+    });
+    return await handleResponse(res);
+  } catch (e) {
+    console.error("Error en deleteUsuario:", e);
+    return { error: "Error de red" };
+  }
+}
+
+// Cambiar estado (activar/desactivar)
+export async function toggleUsuarioEstado(id, activo) {
+  try {
+    const res = await fetch(`/usuarios/${id}/estado`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ activo }),
+    });
+    return await handleResponse(res);
+  } catch (e) {
+    console.error("Error en toggleUsuarioEstado:", e);
     return { error: "Error de red" };
   }
 }

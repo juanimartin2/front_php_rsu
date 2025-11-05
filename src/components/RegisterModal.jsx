@@ -117,14 +117,14 @@ export default function RegisterModal({ isOpen, onClose }) {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white hover:text-gray-300 rounded-lg py-2"
+            className="bg-black w-full bg-m text-white hover:text-gray-300 rounded-lg py-2"
           >
             Registrarse
           </button>
         </form>
         <button
           onClick={onClose}
-          className="mt-3 text-white hover:text-gray-300"
+          className="bg-black mt-3 text-white hover:text-gray-300"
         >
           Cerrar
         </button>

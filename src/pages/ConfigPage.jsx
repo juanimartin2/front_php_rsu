@@ -41,7 +41,7 @@ export default function Home() {
             <img src={Logo} className="h-12 w-auto cursor-pointer" onClick={() => navigate("/home")} />
             <div className="text-left">
               <h2 className="text-xl font-bold">Responsabilidad Social Universitaria</h2>
-              <p className="text-sm opacity-90">Universidad Católica de Cuyo</p> 
+              <p className="text-sm opacity-90">Universidad Católica de Cuyo</p>
               {user.rol === 'ADMINISTRADOR' && <p className="text-sm opacity-90">Administrador</p>}
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function Home() {
           {/* Bienvenida */}
           <div className="bg-white rounded-xl shadow-md p-8 mb-8">
             <h2 className="text-3xl font-bold mb-2" style={{ color: 'var(--main-color)' }}>
-              ¡Bienvenido, {user.nombre}!
+              Configuración
             </h2>
             <p className="text-gray-600 text-lg">
               Selecciona una opción para comenzar a trabajar
@@ -105,25 +105,6 @@ export default function Home() {
 
           {/* Botonera */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Proyectos */}
-            <button 
-              onClick={() => navigate("/proyectos")}
-              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all group"
-            >
-              <div 
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center transition-colors" 
-                style={{ backgroundColor: 'var(--main-color)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hoover-main-color)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--main-color)'}
-              >
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Proyectos</h3>
-              <p className="text-gray-600">Gestionar proyectos de RSU</p>
-            </button>
-
             {/* Informes */}
             <button 
               onClick={() => navigate("/informes")}
@@ -140,33 +121,13 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">Informes</h3>
-              <p className="text-gray-600">Ver y crear informes</p>
+              <p className="text-gray-600">Editar informes existentes</p>
             </button>
 
-
-            {/* Reportes */}
-            <button 
-              onClick={() => navigate("/reportes")}
-              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all group"
-            >
-              <div 
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center transition-colors" 
-                style={{ backgroundColor: 'var(--main-color)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hoover-main-color)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--main-color)'}
-              >
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Reportes</h3>
-              <p className="text-gray-600">Ver estadísticas y métricas</p>
-            </button>
-
-            {/* Configuración (solo para admin) */}
+            {/* Usuarios */}
             {user.permisos && user.permisos.includes("Agregar Usuarios") && (
               <button 
-                onClick={() => navigate("/config")}
+                onClick={() => navigate("/usuarios")}
                 className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all group"
               >
                 <div 
@@ -176,33 +137,25 @@ export default function Home() {
                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--main-color)'}
                 >
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Configuración</h3>
-                <p className="text-gray-600">Ajustes del sistema</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Usuarios</h3>
+                <p className="text-gray-600">Administrar usuarios del sistema</p>
               </button>
             )}
-
-            {/* Ayuda */}
-            <button 
-              onClick={() => navigate("/ayuda")}
-              className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all group"
+          </div>
+          
+          {/* Volver Inicio */}
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => navigate("/home")}
+              className="px-6 py-3 rounded-lg bg-[var(--main-color)] text-white font-semibold transition-colors"
+              onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--hoover-main-color)'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--main-color)'}
             >
-              <div 
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center transition-colors" 
-                style={{ backgroundColor: 'var(--main-color)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hoover-main-color)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--main-color)'}
-              >
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">Ayuda</h3>
-              <p className="text-gray-600">Centro de ayuda y soporte</p>
-            </button>
+              Volver al Inicio
+            </button> 
           </div>
         </div>
       </main>

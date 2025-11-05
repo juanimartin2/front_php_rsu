@@ -109,7 +109,7 @@
   margin-bottom: calc(var(--spacing) * 2);
 }
 .submit-btn:hover {
-  background-color: #027042; /* Slightly darker green on hover */
+  background-color: var(--hoover-main-color); /* Slightly darker green on hover */
 }
 .submit-btn:active {
   background-color: #013b23; /* Even darker green on click */
